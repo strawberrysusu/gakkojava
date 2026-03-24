@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config />
+
+    <bean id="firstBean1" class="java_ch04.contact.service.FirstBean">
+        <qualifier value="usedBean" />
+    </bean>
+    <bean id="firstBean2" class="java_ch04.contact.service.FirstBean" />
+    <bean id="firstBean3" class="java_ch04.contact.service.FirstBean" />
+
+    <bean id="secondBean" class="java_ch04.contact.service.SecondBean" />
+    <bean id="thirdBean" class="java_ch04.contact.service.ThirdBean" />
+
+    <bean id="autoWiredEx" class="java_ch04.contact.AutoWiredEx" />
+</beans>
