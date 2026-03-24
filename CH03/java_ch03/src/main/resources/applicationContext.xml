@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean 은 생성자 호출, property는 setter 메소드를 이용 -->
+    <bean id="initSampleData" class="daelim.java_ch03.utils.InitSampleData">
+        <property name="sNums">
+            <array>
+                <value>spring001</value>
+                <value>spring002</value>
+                <value>spring003</value>
+                <value>spring004</value>
+                <value>spring005</value>
+            </array>
+        </property>
+        <property name="sIds">
+            <array>
+                <value>rabbit</value>
+                <value>hippo</value>
+                <value>raccoon</value>
+                <value>elephant</value>
+                <value>lion</value>
+            </array>
+        </property>
+        <property name="sPws">
+            <array>
+                <value>1111</value>
+                <value>2222</value>
+                <value>3333</value>
+                <value>4444</value>
+                <value>5555</value>
+            </array>
+        </property>
+        <property name="sNames">
+            <array>
+                <value>user01</value>
+                <value>user02</value>
+                <value>user03</value>
+                <value>user04</value>
+                <value>user05</value>
+            </array>
+        </property>
+        <property name="sAges">
+            <array>
+                <value>19</value>
+                <value>20</value>
+                <value>21</value>
+                <value>22</value>
+                <value>23</value>
+            </array>
+        </property>
+        <property name="sGeners">
+            <array>
+                <value>M</value>
+                <value>W</value>
+                <value>W</value>
+                <value>M</value>
+                <value>M</value>
+            </array>
+        </property>
+        <property name="sMajors">
+            <array>
+                <value>AAA</value>
+                <value>BBB</value>
+                <value>CCC</value>
+                <value>DDD</value>
+                <value>EEE</value>
+            </array>
+        </property>
+    </bean>
+
+    <bean id="studentDao" class="daelim.java_ch03.member.dao.StudentDao" />
+
+    <bean id="studentService" class="daelim.java_ch03.member.service.StudentService">
+        <constructor-arg ref="studentDao" />
+    </bean>
+
+    <bean id="printStudentInformationService" class="daelim.java_ch03.member.service.PrintStudentInformationService">
+        <constructor-arg ref="studentService" />
+    </bean>
+
+    <!-- 개발용 -->
+    <bean id="dev_DBConnectionInfo" class="daelim.java_ch03.member.DBConnectionInfo">
+        <property name="url" value="000.000.000.000"/>
+        <property name="userId" value="admin"/>
+        <property name="userPw" value="0000"/>
+    </bean>
+
+    <!-- 실서비스용 -->
+    <bean id="real_DBConnectionInfo" class="daelim.java_ch03.member.DBConnectionInfo">
+        <property name="url" value="000.000.000.000"/>
+        <property name="userId" value="master"/>
+        <property name="userPw" value="1111"/>
+    </bean>
+
+    <bean id="eMSInformationService" class="daelim.java_ch03.member.service.EMSInformationService">
+
+        <property name="info">
+            <value>Education Management System program was developed in 2024.</value>
+        </property>
+
+        <property name="copyRight">
+            <value>COPYRIGHT(C) 2024 DAELIM UNIVERSITY COLLEGE. ALL RIGHT RESERVED.</value>
+        </property>
+
+        <property name="ver">
+            <value>The version is 1.0</value>
+        </property>
+
+        <property name="sYear" value="2024" />
+        <property name="sMonth" value="3" />
+        <property name="sDay" value="22" />
+        <property name="eYear" value="2024" />
+        <property name="eMonth" value="4" />
+        <property name="eDay" value="30" />
+
+        <property name="developers">
+            <list>
+                <value>Dev01</value>
+                <value>Dev02</value>
+                <value>Dev03</value>
+                <value>Dev04</value>
+            </list>
+        </property>
+
+        <property name="administrators">
+            <map>
+                <entry>
+                    <key>
+                        <value>Dev01</value>
+                    </key>
+                    <value>dev01@test.com</value>
+                </entry>
+                <entry>
+                    <key>
+                        <value>Dev03</value>
+                    </key>
+                    <value>dev03@test.com</value>
+                </entry>
+            </map>
+        </property>
+
+        <property name="dbInfos">
+            <map>
+                <entry>
+                    <key>
+                        <value>dev</value>
+                    </key>
+                    <ref bean="dev_DBConnectionInfo" />
+                </entry>
+                <entry>
+                    <key>
+                        <value>real</value>
+                    </key>
+                    <ref bean="real_DBConnectionInfo" />
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+</beans>

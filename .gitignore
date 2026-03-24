@@ -1,0 +1,10 @@
+.idea/
+**/.idea/
+*.iml
+**/target/
+**/tmp-classes/
+**/out/
+_archive/
+NewsSummaryProject/
+**/.git_backup*/
+Thumbs.db
